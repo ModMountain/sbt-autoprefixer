@@ -21,5 +21,15 @@ npm install --global postcss autoprefixer
 ```
 If you have trouble running this command, try running the command as a super user.
 
+Once installed, make sure your project's build file has sbt-web enabled:
+```
+lazy val root = (project.in file(".")).enablePlugins(SbtWeb)
+```
+
+Finally, add sbt-autoprefixer to the sbt-web asset pipeline:
+```
+pipelineStages := Seq(autoprefixer)
+```
+
 ## Configuration
 Currently there are no configuration options. I plan to add some in the future but for now you are stuck with Autoprefixer's defaults.
