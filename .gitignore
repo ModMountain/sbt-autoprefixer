@@ -1,0 +1,9 @@
+*.class
+*.log
+
+# sbt specific
+target/
+project/target/
+
+# Idea
+.idea/
