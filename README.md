@@ -33,3 +33,8 @@ pipelineStages := Seq(autoprefixer)
 
 ## Configuration
 Currently there are no configuration options. I plan to add some in the future but for now you are stuck with Autoprefixer's defaults.
+
+## Credit
+[sbt-autoprefixer](https://github.com/matthewrennie/sbt-autoprefixer): Without this existing, I wouldn't have created my own version
+
+[sbt-gzip](https://github.com/sbt/sbt-gzip): Easy to read code that let me figure out how sbt-web pipeline plugins work
