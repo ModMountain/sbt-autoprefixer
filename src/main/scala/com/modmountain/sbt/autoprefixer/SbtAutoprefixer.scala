@@ -31,15 +31,15 @@ object SbtAutoprefixer extends AutoPlugin {
     excludeFilter in autoprefixer := HiddenFileFilter,
     target in autoprefixer := webTarget.value / autoprefixer.key.label,
     deduplicators += SbtWeb.selectFileFrom((target in autoprefixer).value),
-    autoprefixer := gzipFiles.value
+    autoprefixer := autoPrefixFiles.value
   )
 
-  def gzipFiles: Def.Initialize[Task[Pipeline.Stage]] = Def.task {
+  def autoPrefixFiles: Def.Initialize[Task[Pipeline.Stage]] = Def.task {
     mappings =>
       val targetDir = (target in autoprefixer).value
       val include = (includeFilter in autoprefixer).value
       val exclude = (excludeFilter in autoprefixer).value
-      val gzipMappings = for {
+      val autoPrefixMappings = for {
         (file, path) <- mappings if !file.isDirectory && include.accept(file) && !exclude.accept(file)
       } yield {
           val outputPath = path
@@ -48,7 +48,7 @@ object SbtAutoprefixer extends AutoPlugin {
           compile(file, outputFile)
           (outputFile, outputPath)
         }
-      mappings ++ gzipMappings
+      mappings ++ autoPrefixMappings
   }
 
   def compile(cssFile: File, outfile: File) = {
