@@ -34,6 +34,7 @@ object SbtAutoprefixer extends AutoPlugin {
     autoprefixer := autoPrefixFiles.value
   )
 
+  // The meat of the program, does all the heavy lifting
   def autoPrefixFiles: Def.Initialize[Task[Pipeline.Stage]] = Def.task {
     mappings =>
       val targetDir = (target in autoprefixer).value
@@ -44,6 +45,7 @@ object SbtAutoprefixer extends AutoPlugin {
       } yield {
           val outputPath = path
           val outputFile = targetDir / outputPath
+          // We must make the parent directory tree for the output file (or Autoprefixer fails)
           outputFile.getParentFile.mkdirs()
           compile(file, outputFile)
           (outputFile, outputPath)
