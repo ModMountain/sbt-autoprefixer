@@ -56,7 +56,7 @@ object SbtAutoprefixer extends AutoPlugin {
   def compile(cssFile: File, outfile: File) = {
     try {
       runCompiler(
-        autoprefixerCommand ++ Seq("-o", outfile.getAbsolutePath, cssFile.getAbsolutePath)
+        autoprefixerCommand ++ Seq("--output", outfile.getAbsolutePath, cssFile.getAbsolutePath)
       )
 
     } catch {
