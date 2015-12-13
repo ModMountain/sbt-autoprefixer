@@ -4,16 +4,17 @@ organization := "com.modmountain.sbt"
 
 name := "sbt-autoprefixer"
 
-version := "0.1.0"
+version := "0.2.0"
 
-scalaVersion := "2.10.4"
+scalaVersion := "2.10.6"
 
 resolvers ++= Seq(
   Resolver.mavenLocal,
-  "Typesafe Releases Repository" at "http://repo.typesafe.com/typesafe/releases/"
+  Resolver.typesafeIvyRepo("releases"),
+  Resolver.sonatypeRepo("releases")
 )
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-web" % "1.0.0")
+addSbtPlugin("com.typesafe.sbt" % "sbt-web" % "1.2.2")
 
 publishMavenStyle := true
 
@@ -22,7 +23,7 @@ publishTo := {
   if (isSnapshot.value)
     Some("snapshots" at nexus + "content/repositories/snapshots")
   else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
 }
 
 publishArtifact in Test := false
@@ -38,11 +39,11 @@ pomExtra := (
     <url>git@github.com:ModMountain/sbt-autoprefixer.git</url>
     <connection>scm:git:git@github.com:ModMountain/sbt-autoprefixer.git</connection>
   </scm>
-  <developers>
-    <developer>
-      <id>sirsavary</id>
-      <name>Jesse Savary</name>
-      <url>http://www.jessesavary.com</url>
-    </developer>
-  </developers>
+    <developers>
+      <developer>
+        <id>sirsavary</id>
+        <name>Jesse Savary</name>
+        <url>http://www.jessesavary.com</url>
+      </developer>
+    </developers>
   )
