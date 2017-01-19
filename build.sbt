@@ -4,7 +4,7 @@ organization := "com.modmountain.sbt"
 
 name := "sbt-autoprefixer"
 
-version := "0.2.0"
+version := "0.2.1"
 
 scalaVersion := "2.10.6"
 

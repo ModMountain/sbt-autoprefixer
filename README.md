@@ -17,7 +17,7 @@ sbt clean publishLocal
 
 Once you have published sbt-autoprefixer locally, install PostCSS and Autoprefixer:
 ```
-npm install --global postcss autoprefixer
+npm install --global postcss autoprefixer postcss-cli
 ```
 If you have trouble running this command, try running the command as a super user.
 

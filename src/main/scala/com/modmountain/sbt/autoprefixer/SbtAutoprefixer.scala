@@ -66,7 +66,7 @@ object SbtAutoprefixer extends AutoPlugin {
   }
 
   // Gets the Autoprefixer command based on the operating system
-  private def autoprefixerCommand = if (isWindows) Seq("cmd", "/c","postcss.cmd", "--use", "autoprefixer") else Seq("")
+  private def autoprefixerCommand = if (isWindows) Seq("cmd", "/c","postcss.cmd", "--use", "autoprefixer") else Seq("postcss", "--use", "autoprefixer")
 
   private val isWindows = System.getProperty("os.name").toLowerCase().indexOf("win") >= 0
 
