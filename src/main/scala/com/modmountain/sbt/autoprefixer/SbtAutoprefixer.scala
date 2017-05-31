@@ -80,7 +80,7 @@ object SbtAutoprefixer extends AutoPlugin {
       (error: String) => err.append(error + "\n"))
 
     val process = command.run(capturer)
-    if (process.exitValue != 0 || err.nonEmpty) {
+    if (process.exitValue != 0) {
       throw new RuntimeException(err.toString)
     }
   }
